@@ -14,21 +14,25 @@
 
         <div>
             <asp:Label ID="lblEmail" runat="server" Text="Email: "></asp:Label>
-            <input id="txtEmail" type="text" type="email"/>
+            <asp:TextBox ID="tbEmail" runat="server" TextMode="Email"></asp:TextBox>
         </div>
 
         <div>
             <asp:Label ID="lblPassword" runat="server" Text="Password: "></asp:Label>
-            <input id="txtPassword" type="password" />
+            <asp:TextBox ID="tbPassword" runat="server" TextMode="Password"></asp:TextBox>
         </div>
 
         <div>
             <asp:Label ID="lblRememberMe" runat="server" Text="Remember Me"></asp:Label>
-            <input id="cbRememberMe" type="checkbox" />
+            <asp:CheckBox ID="cbRememberMe" runat="server" />
         </div>
 
         <div>
             <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />
+        </div>
+
+        <div>
+            <asp:Label ID="lblErrorMsg" runat="server" Text="Incorrect email or password!" Visible="false" ForeColor="Red"></asp:Label>
         </div>
 
         <br /><br />

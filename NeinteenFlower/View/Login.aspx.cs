@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NeinteenFlower.Controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,7 +17,22 @@ namespace NeinteenFlower.View
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-
+            string email = tbEmail.Text.ToString();
+            string password = tbPassword.Text.ToString();
+            string result =  AuthController.getLoginInfo(email, password);
+            if (result.Equals("Fail"))
+            {
+                lblErrorMsg.Visible = true;
+                return;
+            }
+            //lblErrorMsg.Visible = false;
+            var user = result.Split('-');
+            string role = user[0];
+            int userId = int.Parse(user[1]);
+            string userName = user[2];
+            lblEmail.Text = "";
+            lblPassword.Text = "";
+            Response.Redirect("~/View/Home.aspx?userName=" + userName);
         }
     }
 }

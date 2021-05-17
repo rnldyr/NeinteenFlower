@@ -90,11 +90,14 @@
       <LastGenOutput>NeinteenFlowerModel.cs</LastGenOutput>
     </Content>
     <Content Include="View\ForgotPassword.aspx" />
+    <Content Include="View\Home.aspx" />
     <Content Include="View\Login.aspx" />
     <Content Include="View\Register.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\AuthController.cs" />
+    <Compile Include="Handler\AuthHandler.cs" />
     <Compile Include="Model\MsEmployee.cs">
       <DependentUpon>NeinteenFlowerModel.tt</DependentUpon>
     </Compile>
@@ -129,12 +132,22 @@
     <Compile Include="Model\TrHeader.cs">
       <DependentUpon>NeinteenFlowerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\EmployeeRepository.cs" />
+    <Compile Include="Repository\FlowerRepository.cs" />
+    <Compile Include="Repository\MemberRepository.cs" />
     <Compile Include="View\ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="View\ForgotPassword.aspx.designer.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -168,11 +181,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controller\" />
     <Folder Include="Factory\" />
     <Folder Include="FlowerImages\" />
-    <Folder Include="Handler\" />
-    <Folder Include="Repository\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
