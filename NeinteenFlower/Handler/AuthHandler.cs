@@ -52,5 +52,19 @@ namespace NeinteenFlower.Handler
             return "Fail";
         }
 
+        public static bool checkUniqueEmail(string email)
+        {
+            if (EmployeeRepository.checkUniqueEmail(email) && MemberRepository.checkUniqueEmail(email))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static string register(string email, string password, string name, string DOB, string gender, string phoneNumber, string address)
+        {
+            return MemberRepository.register(email, password, name, DOB, gender, phoneNumber, address);
+        }
+
     }
 }

@@ -39,5 +39,15 @@ namespace NeinteenFlower.Repository
             db.SaveChanges();
             return "Success";
         }
+
+        public static bool checkUniqueEmail(string email)
+        {
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            var result = (from e in db.MsEmployees
+                          where e.EmployeeEmail == email
+                          select e).FirstOrDefault();
+            if (result == null) return true;
+            return false;
+        }
     }
 }

@@ -51,15 +51,6 @@ namespace NeinteenFlower.View
         protected global::System.Web.UI.WebControls.TextBox tbEmail;
 
         /// <summary>
-        /// lblEmailErr control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmailErr;
-
-        /// <summary>
         /// lblPassword control.
         /// </summary>
         /// <remarks>
@@ -76,15 +67,6 @@ namespace NeinteenFlower.View
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbPassword;
-
-        /// <summary>
-        /// LblPasswordErr control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblPasswordErr;
 
         /// <summary>
         /// lblName control.
@@ -105,15 +87,6 @@ namespace NeinteenFlower.View
         protected global::System.Web.UI.WebControls.TextBox tbName;
 
         /// <summary>
-        /// lblNameErr control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNameErr;
-
-        /// <summary>
         /// lblDOB control.
         /// </summary>
         /// <remarks>
@@ -130,15 +103,6 @@ namespace NeinteenFlower.View
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbDOB;
-
-        /// <summary>
-        /// lblDOBErr control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDOBErr;
 
         /// <summary>
         /// lblGender control.
@@ -159,15 +123,6 @@ namespace NeinteenFlower.View
         protected global::System.Web.UI.WebControls.RadioButtonList rblGender;
 
         /// <summary>
-        /// lblGenderErr control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblGenderErr;
-
-        /// <summary>
         /// lblPhoneNumber control.
         /// </summary>
         /// <remarks>
@@ -184,15 +139,6 @@ namespace NeinteenFlower.View
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbPhoneNumber;
-
-        /// <summary>
-        /// lblPhoneNumberErr control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPhoneNumberErr;
 
         /// <summary>
         /// lblAddress control.
@@ -213,13 +159,13 @@ namespace NeinteenFlower.View
         protected global::System.Web.UI.WebControls.TextBox tbAddress;
 
         /// <summary>
-        /// lblAddressErr control.
+        /// lblErrMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAddressErr;
+        protected global::System.Web.UI.WebControls.Label lblErrMsg;
 
         /// <summary>
         /// btnRegister control.
