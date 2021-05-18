@@ -1,4 +1,5 @@
 ﻿using NeinteenFlower.Controller;
+using NeinteenFlower.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,32 @@ namespace NeinteenFlower.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            if (!IsPostBack)
+            {
+                if (Request.Cookies["user"] != null)
+                {
+                    switch (Request.Cookies["user"]["role"])
+                    {
+                        case "Admin":
+                            tbEmail.Text = "admin";
+                            tbPassword.Attributes.Add("value", "admin");
+                            break;
+                        case "Employee":
+                            MsEmployee employee = new MsEmployee();
+                            employee = AuthController.getEmployee(int.Parse(Request.Cookies["user"]["userId"]));
+                            tbEmail.Text = employee.EmployeeEmail;
+                            tbPassword.Attributes.Add("value", employee.EmployeePassword);
+                            break;
+                        case "Member":
+                            MsMember member = new MsMember();
+                            member = AuthController.GetMember(int.Parse(Request.Cookies["user"]["userId"]));
+                            tbEmail.Text = member.MemberEmail;
+                            tbPassword.Attributes.Add("value", member.MemberPassword);
+                            break;
+                    }
+
+                }
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -25,14 +51,47 @@ namespace NeinteenFlower.View
                 lblErrorMsg.Visible = true;
                 return;
             }
-            //lblErrorMsg.Visible = false;
-            var user = result.Split('-');
-            string role = user[0];
-            int userId = int.Parse(user[1]);
-            string userName = user[2];
-            lblEmail.Text = "";
-            lblPassword.Text = "";
-            Response.Redirect("~/View/Home.aspx?userName=" + userName);
+
+            // Login Succeed
+            lblErrorMsg.Visible = false;
+            var roleAndId = result.Split('-');
+            string role = roleAndId[0];
+            int userId = int.Parse(roleAndId[1]);
+
+            if (role.Equals("Admin"))
+            {
+                string user = "admin";
+                Session["user"] = user;
+            }
+            else if (role.Equals("Employee"))
+            {
+                MsEmployee user = new MsEmployee();
+                user = AuthController.getEmployee(userId);
+                Session["user"] = user;
+            }
+            else if (role.Equals("Member"))
+            {
+                MsMember user = new MsMember();
+                user = AuthController.GetMember(userId);
+                Session["user"] = user;
+            }
+
+            Session["role"] = role;
+
+            // Check Remember Me
+            if (cbRememberMe.Checked)
+            {
+                HttpCookie cookie = new HttpCookie("user");
+                cookie.Values.Add("userId", userId.ToString());
+                cookie.Values.Add("role", role);
+                cookie.Expires.AddDays(1);
+                Response.SetCookie(cookie);
+            }
+
+
+            tbEmail.Text = "";
+            tbPassword.Text = "";
+            Response.Redirect("~/View/Home.aspx");
         }
     }
 }

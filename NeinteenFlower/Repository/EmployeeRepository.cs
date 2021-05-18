@@ -17,10 +17,10 @@ namespace NeinteenFlower.Repository
             return employeeId;
         }
 
-        public static string getEmployeeName(int id)
+        public static MsEmployee getEmployee(int id)
         {
             NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
-            return db.MsEmployees.Find(id).EmployeeName;
+            return db.MsEmployees.Find(id);
         }
     }
 }

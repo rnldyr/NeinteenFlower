@@ -17,10 +17,10 @@ namespace NeinteenFlower.Repository
             return memberId;
         }
 
-        public static string getMemberName(int id)
+        public static MsMember getMember(int id)
         {
             NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
-            return db.MsMembers.Find(id).MemberName;
+            return db.MsMembers.Find(id);
         }
     }
 }

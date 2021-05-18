@@ -4,12 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Login</title>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="txtTitle" runat="server" Text="Login" Font-Bold="true"></asp:Label>
+            <asp:Label ID="lblTitle" runat="server" Text="Login" Font-Bold="true"></asp:Label>
         </div>
 
         <div>

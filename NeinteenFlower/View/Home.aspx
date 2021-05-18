@@ -11,6 +11,11 @@
         <div>
             <asp:Label ID="lblWelcomeMsg" runat="server" Text=""></asp:Label>
         </div>
+
+        <div>
+            <asp:Button ID="btnHome" runat="server" Text="Home" OnClick="btnHome_Click" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click"/>
+        </div>
     </form>
 </body>
 </html>
