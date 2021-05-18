@@ -28,5 +28,20 @@ namespace NeinteenFlower.Controller
             return AuthHandler.getMember(id);
 
         }
+
+        public static string changePassword(string email, string captcha, string newPassword)
+        {
+            if(email.Equals("") || captcha.Equals("") || newPassword.Equals(""))
+            {
+                return "Fail";
+            }
+
+            if (!newPassword.Equals(captcha))
+            {
+                return "Fail";
+            }
+
+            return AuthHandler.changePassword(email, newPassword);
+        }
     }
 }

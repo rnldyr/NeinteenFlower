@@ -42,5 +42,15 @@ namespace NeinteenFlower.Handler
 
         }
 
+        public static string changePassword(string email, string newPassword)
+        {
+            if(EmployeeRepository.changePassword(email, newPassword).Equals("Success") ||
+                MemberRepository.changePassword(email, newPassword).Equals("Success"))
+            {
+                return "Success";
+            }
+            return "Fail";
+        }
+
     }
 }

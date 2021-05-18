@@ -88,7 +88,6 @@ namespace NeinteenFlower.View
                 Response.SetCookie(cookie);
             }
 
-
             tbEmail.Text = "";
             tbPassword.Text = "";
             Response.Redirect("~/View/Home.aspx");

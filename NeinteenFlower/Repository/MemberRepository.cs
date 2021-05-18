@@ -22,5 +22,22 @@ namespace NeinteenFlower.Repository
             NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
             return db.MsMembers.Find(id);
         }
+
+        public static string changePassword(string email, string newPassword)
+        {
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            MsMember member = (from m in db.MsMembers
+                               where m.MemberEmail == email
+                               select m).FirstOrDefault();
+
+            if (member == null)
+            {
+                return "Fail";
+            }
+
+            member.MemberPassword = newPassword;
+            db.SaveChanges();
+            return "Success";
+        }
     }
 }
