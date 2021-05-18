@@ -16,6 +16,24 @@
             <asp:Button ID="btnHome" runat="server" Text="Home" OnClick="btnHome_Click" />
             <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click"/>
         </div>
+        <div>
+            <asp:Button ID="btnViewTr" runat="server" Text="Button" Visible="False" />
+            <asp:Button ID="btnPreorder" runat="server" Text="Button" Visible="False" />
+            <asp:Button ID="btnMngFlower" runat="server" Text="Button" Visible="False" />
+            <asp:Button ID="btnMngMem" runat="server" Text="Button" Visible="False" />
+            <asp:Button ID="btnMngEmp" runat="server" Text="Button" Visible="False" />
+        </div>
+        <br />
+        <asp:GridView ID="gvFlowers" runat="server" AutoGenerateColumns="False" Visible="False" OnSelectedIndexChanged="gvFlowers_SelectedIndexChanged">
+            <Columns>
+                <asp:BoundField DataField="FlowerName" HeaderText="Name" />
+                <asp:BoundField DataField="FlowerImage" HeaderText="Image" />
+                <asp:BoundField DataField="FlowerDescription" HeaderText="Description" />
+                <asp:BoundField DataField="MsFlowerType.FlowerTypeName" HeaderText="Flower Type" />
+                <asp:BoundField DataField="FlowerPrice" HeaderText="Price" />
+                <asp:CommandField SelectText="Pre Order" ShowSelectButton="True" />
+            </Columns>
+        </asp:GridView>
     </form>
 </body>
 </html>

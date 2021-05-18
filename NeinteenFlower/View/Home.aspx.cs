@@ -1,4 +1,5 @@
 ﻿using NeinteenFlower.Model;
+using NeinteenFlower.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,18 +24,28 @@ namespace NeinteenFlower.View
             {
                 string user = Session["user"].ToString();
                 lblWelcomeMsg.Text = "Welcome, " + user;
+                btnMngMem.Visible = true;
+                btnMngEmp.Visible = true;
             }
             else if (role.Equals("Employee"))
             {
                 MsEmployee user = new MsEmployee();
                 user = (MsEmployee)Session["user"];
                 lblWelcomeMsg.Text = "Welcome, " + user.EmployeeName;
+                btnMngFlower.Visible = true;
             }
             else if (role.Equals("Member"))
             {
                 MsMember user = new MsMember();
                 user = (MsMember)Session["user"];
                 lblWelcomeMsg.Text = "Welcome, " + user.MemberName;
+                btnViewTr.Visible = true;
+                btnPreorder.Visible = true;
+
+                gvFlowers.Visible = true;
+                List<MsFlower> flowerList = FlowerRepository.FlowerList();
+                gvFlowers.DataSource = flowerList;
+                gvFlowers.DataBind();
             }
         }
 
@@ -48,6 +59,11 @@ namespace NeinteenFlower.View
             Response.Cookies["user"].Expires = DateTime.Now.AddDays(-1);
             Session.Clear();
             Response.Redirect("~/View/Login.aspx");
+        }
+
+        protected void gvFlowers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
