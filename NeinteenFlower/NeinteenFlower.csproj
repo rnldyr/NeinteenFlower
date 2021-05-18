@@ -97,6 +97,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\AuthController.cs" />
+    <Compile Include="Factory\EmployeeFactory.cs" />
+    <Compile Include="Factory\MemberFactory.cs" />
     <Compile Include="Handler\AuthHandler.cs" />
     <Compile Include="Model\MsEmployee.cs">
       <DependentUpon>NeinteenFlowerModel.tt</DependentUpon>
@@ -180,10 +182,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Factory\" />
-    <Folder Include="FlowerImages\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
