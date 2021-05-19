@@ -80,6 +80,7 @@
       <DependentUpon>NeinteenFlowerDB.mdf</DependentUpon>
     </Content>
     <Content Include="FlowerImages\anggrek.jpg" />
+    <Content Include="View\InsertFlower.aspx" />
     <Content Include="Model\NeinteenFlowerModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NeinteenFlowerModel.Context.cs</LastGenOutput>
@@ -90,6 +91,7 @@
       <DependentUpon>NeinteenFlowerModel.edmx</DependentUpon>
       <LastGenOutput>NeinteenFlowerModel.cs</LastGenOutput>
     </Content>
+    <Content Include="View\UpdateFlower.aspx" />
     <Content Include="View\ForgotPassword.aspx" />
     <Content Include="View\Home.aspx" />
     <Content Include="View\Login.aspx" />
@@ -107,6 +109,13 @@
     <Compile Include="Factory\FlowerFactory.cs" />
     <Compile Include="Factory\MemberFactory.cs" />
     <Compile Include="Handler\AuthHandler.cs" />
+    <Compile Include="View\InsertFlower.aspx.cs">
+      <DependentUpon>InsertFlower.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\InsertFlower.aspx.designer.cs">
+      <DependentUpon>InsertFlower.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Model\MsEmployee.cs">
       <DependentUpon>NeinteenFlowerModel.tt</DependentUpon>
     </Compile>
@@ -144,6 +153,13 @@
     <Compile Include="Repository\EmployeeRepository.cs" />
     <Compile Include="Repository\FlowerRepository.cs" />
     <Compile Include="Repository\MemberRepository.cs" />
+    <Compile Include="View\UpdateFlower.aspx.cs">
+      <DependentUpon>UpdateFlower.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\UpdateFlower.aspx.designer.cs">
+      <DependentUpon>UpdateFlower.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
