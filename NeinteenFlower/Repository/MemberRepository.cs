@@ -59,5 +59,11 @@ namespace NeinteenFlower.Repository
             db.SaveChanges();
             return "Success";
         }
+
+        public static List<MsMember> getListMembers()
+        {
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            return (from data in db.MsMembers select data).ToList();
+        }
     }
 }
