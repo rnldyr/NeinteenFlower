@@ -49,7 +49,7 @@ namespace NeinteenFlower.Controller
         {
             if (email.Equals("") || password.Equals("") || name.Equals("") || DOB.Equals("") || gender.Equals("") || phoneNumber.Equals("") || address.Equals(""))
             {
-                return "all field must be filled/chosen!";
+                return "All field must be filled/chosen!";
             }
 
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");

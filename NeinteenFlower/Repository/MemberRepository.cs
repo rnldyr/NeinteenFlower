@@ -1,4 +1,5 @@
-﻿using NeinteenFlower.Model;
+﻿using NeinteenFlower.Factory;
+using NeinteenFlower.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +53,10 @@ namespace NeinteenFlower.Repository
 
         public static string register(string email, string password, string name, string DOB, string gender, string phoneNumber, string address)
         {
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            MsMember member = MemberFactory.createMember(email, password, name, DOB, gender, phoneNumber, address);
+            db.MsMembers.Add(member);
+            db.SaveChanges();
             return "Success";
         }
     }

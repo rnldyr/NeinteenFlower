@@ -43,7 +43,7 @@ namespace NeinteenFlower.View
 
             if (result.Equals("Success"))
             {
-
+                Response.Redirect("~/View/Login.aspx");
             }
             else
             {

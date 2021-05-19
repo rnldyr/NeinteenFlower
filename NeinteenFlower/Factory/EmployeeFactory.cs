@@ -8,14 +8,15 @@ namespace NeinteenFlower.Factory
 {
     public class EmployeeFactory
     {
-        public static MsEmployee CreateEmployee(string name, string gender, string address, string phone, string email, int salary, string password)
+        public static MsEmployee CreateEmployee(string email, string password, string name, string DOB, string gender, string phoneNumber, string address, int salary)
         {
             MsEmployee data = new MsEmployee
             {
                 EmployeeName = name,
+                EmployeeDOB = DateTime.Parse(DOB),
                 EmployeeGender = gender,
                 EmployeeAddress = address,
-                EmployeePhone = phone,
+                EmployeePhone = phoneNumber,
                 EmployeeEmail = email,
                 EmployeeSalary = salary,
                 EmployeePassword = password
