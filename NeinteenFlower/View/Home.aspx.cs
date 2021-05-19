@@ -65,5 +65,30 @@ namespace NeinteenFlower.View
         {
 
         }
+
+        protected void btnViewTr_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/TransactionHistory.aspx");
+        }
+
+        protected void btnPreorder_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/Preorder.aspx");
+        }
+
+        protected void btnMngFlower_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/ManageFlower.aspx");
+        }
+
+        protected void btnMngMem_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/ManageMember.aspx");
+        }
+
+        protected void btnMngEmp_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/ManageEmployee.aspx");
+        }
     }
 }

@@ -17,17 +17,17 @@
             <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click"/>
         </div>
         <div>
-            <asp:Button ID="btnViewTr" runat="server" Text="Button" Visible="False" />
-            <asp:Button ID="btnPreorder" runat="server" Text="Button" Visible="False" />
-            <asp:Button ID="btnMngFlower" runat="server" Text="Button" Visible="False" />
-            <asp:Button ID="btnMngMem" runat="server" Text="Button" Visible="False" />
-            <asp:Button ID="btnMngEmp" runat="server" Text="Button" Visible="False" />
+            <asp:Button ID="btnViewTr" runat="server" Text="View Transaction History" Visible="False" OnClick="btnViewTr_Click" />
+            <asp:Button ID="btnPreorder" runat="server" Text="Preorder" Visible="False" OnClick="btnPreorder_Click" />
+            <asp:Button ID="btnMngFlower" runat="server" Text="Manage Flower" Visible="False" OnClick="btnMngFlower_Click" />
+            <asp:Button ID="btnMngMem" runat="server" Text="Manage Member" Visible="False" OnClick="btnMngMem_Click" />
+            <asp:Button ID="btnMngEmp" runat="server" Text="Manage Employee" Visible="False" OnClick="btnMngEmp_Click" />
         </div>
         <br />
         <asp:GridView ID="gvFlowers" runat="server" AutoGenerateColumns="False" Visible="False" OnSelectedIndexChanged="gvFlowers_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="FlowerName" HeaderText="Name" />
-                <asp:BoundField DataField="FlowerImage" HeaderText="Image" />
+                <asp:ImageField DataImageUrlField="FlowerImage" HeaderText="Image" />
                 <asp:BoundField DataField="FlowerDescription" HeaderText="Description" />
                 <asp:BoundField DataField="MsFlowerType.FlowerTypeName" HeaderText="Flower Type" />
                 <asp:BoundField DataField="FlowerPrice" HeaderText="Price" />
