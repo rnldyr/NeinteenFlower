@@ -106,12 +106,14 @@
   <ItemGroup>
     <Compile Include="Controller\AuthController.cs" />
     <Compile Include="Controller\EmployeeController.cs" />
+    <Compile Include="Controller\FlowerController.cs" />
     <Compile Include="Controller\MemberController.cs" />
     <Compile Include="Factory\EmployeeFactory.cs" />
     <Compile Include="Factory\FlowerFactory.cs" />
     <Compile Include="Factory\MemberFactory.cs" />
     <Compile Include="Handler\AuthHandler.cs" />
     <Compile Include="Handler\EmployeeHandler.cs" />
+    <Compile Include="Handler\FlowerHandler.cs" />
     <Compile Include="Handler\MemberHandler.cs" />
     <Compile Include="View\InsertFlower.aspx.cs">
       <DependentUpon>InsertFlower.aspx</DependentUpon>

@@ -29,5 +29,22 @@ namespace NeinteenFlower.Repository
             db.SaveChanges();
 
         }
+
+        public static void insert(string name, var file, string desc, string type, int price)
+        {
+
+        }
+
+        public static void update()
+        {
+
+        }
+
+        public static MsFlower GetFlower(int id)
+        {
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            MsFlower mf = (from msf in db.MsFlowers where msf.FlowerID == id select msf).FirstOrDefault();
+            return mf;
+        }
     }
 }
