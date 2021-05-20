@@ -9,27 +9,21 @@
 <body>
     <form id="form1" runat="server"  OnItemCommand="Repeater1_ItemCommand">
         <div>
-            <asp:Repeater ID="Repeater1" runat="server">
-                <ItemTemplate>
-                    <asp:Label ID="NameDisplay" runat="server" Text='<%# Eval("MemberName") %>'></asp:Label>
-                    <asp:Label Text="       |       " runat="server" />
-                    <asp:Label ID="DateOfBirthDisplay" runat="server" Text='<%# Eval("MemberDOB") %>'></asp:Label>
-                    <asp:Label Text="       |       " runat="server" />
-                    <asp:Label ID="GenderDisplay" runat="server" Text='<%# Eval("MemberGender") %>'></asp:Label>
-                    <asp:Label Text="       |       " runat="server" />
-                    <asp:Label ID="AddressDisplay" runat="server" Text='<%# Eval("MemberAddress") %>'></asp:Label>
-                    <asp:Label Text="       |       " runat="server" />
-                    <asp:Label ID="PhoneDisplay" runat="server" Text='<%# Eval("MemberPhone") %>'></asp:Label>
-                    <asp:Label Text="       |       " runat="server" />
-                    <asp:Label ID="EmailDisplay" runat="server" Text='<%# Eval("MemberEmail") %>'></asp:Label>
-                    <asp:Label Text="       |       " runat="server" />
-                    <asp:Label ID="PasswordDisplay" runat="server" Text='<%# Eval("MemberPassword") %>'></asp:Label>
-                    <br />
-                    <asp:Button ID="UpdateBtn" runat="server" Text="Update" />
-                    <asp:Button ID="DeleteBtn" Text="Delete" runat="server" />
-                    <br />
-                </ItemTemplate>
-            </asp:Repeater>
+            <asp:HyperLink ID="InsertHyperlink" NavigateUrl="~/View/InsertMember.aspx" runat="server">Insert Member</asp:HyperLink>
+        </div>
+        <br />
+        <div>
+            <asp:GridView ID="Members" runat="server" AutoGenerateColumns="False" OnRowEditing="Members_RowEditing" OnRowDeleting="Members_RowDeleting">
+                <Columns>
+                    <asp:BoundField DataField="MemberName" HeaderText="Name" />
+                    <asp:BoundField DataField="MemberDOB" HeaderText="Date of Birth" />
+                    <asp:BoundField DataField="MemberGender" HeaderText="Gender" />
+                    <asp:BoundField DataField="MemberAddress" HeaderText="Address" />
+                    <asp:BoundField DataField="MemberPhone" HeaderText="Phone" />
+                    <asp:BoundField DataField="MemberEmail" HeaderText="Email" />
+                    <asp:CommandField ButtonType="Button" ShowEditButton="true" EditText="Update" ShowDeleteButton="true"/>
+                </Columns>
+            </asp:GridView>
         </div>
     </form>
 </body>

@@ -14,8 +14,22 @@ namespace NeinteenFlower.View
         protected void Page_Load(object sender, EventArgs e)
         {
             List<MsMember> memberlist = MemberRepository.getListMembers();
-            Repeater1.DataSource = memberlist;
-            Repeater1.DataBind();
+            Members.DataSource = memberlist;
+            Members.DataBind();
+        }
+
+        protected void Members_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridViewRow row = Members.Rows[e.NewEditIndex];
+            int id = MemberRepository.getMemberId(row.Cells[0].Text.ToString());
+            Response.Redirect("~/View/UpdateMember.aspx?id=" + id);
+        }
+
+        protected void Members_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            GridViewRow row = Members.Rows[e.RowIndex];
+            int id = MemberRepository.getMemberId(row.Cells[0].Text.ToString());
+            MemberRepository.DeleteMember(id);
         }
     }
 }

@@ -65,5 +65,19 @@ namespace NeinteenFlower.Repository
             NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
             return (from data in db.MsMembers select data).ToList();
         }
+
+        public static void DeleteMember (int id)
+        {
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            MsMember temp = (from data in db.MsMembers where data.MemberID == id select data).FirstOrDefault();
+            db.MsMembers.Remove(temp);
+            db.SaveChanges();
+        }
+
+        public static int getMemberId(string name)
+        {
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            return (from data in db.MsMembers where data.MemberName.Equals(name) select data.MemberID).FirstOrDefault();
+        }
     }
 }

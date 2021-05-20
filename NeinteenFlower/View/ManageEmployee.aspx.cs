@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NeinteenFlower.Model;
+using NeinteenFlower.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,23 @@ namespace NeinteenFlower.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            List<MsEmployee> employeelist = EmployeeRepository.getListEmployee();
+            Employees.DataSource = employeelist;
+            Employees.DataBind();
+        }
 
+        protected void Employees_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridViewRow row = Employees.Rows[e.NewEditIndex];
+            int id = EmployeeRepository.getEmployeeId(row.Cells[0].Text.ToString());
+            Response.Redirect("~/View/UpdateEmployee.aspx?id=" + id);
+        }
+
+        protected void Employees_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            GridViewRow row = Employees.Rows[e.RowIndex];
+            int id = EmployeeRepository.getEmployeeId(row.Cells[0].Text.ToString());
+            EmployeeRepository.DeleteEmployee(id);
         }
     }
 }
