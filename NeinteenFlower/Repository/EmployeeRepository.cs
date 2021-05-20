@@ -49,5 +49,25 @@ namespace NeinteenFlower.Repository
             if (result == null) return true;
             return false;
         }
+
+        public static List<MsEmployee> getListEmployee()
+        {
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            return (from data in db.MsEmployees select data).ToList();
+        }
+
+        public static void DeleteEmployee(int id)
+        {
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            MsEmployee temp = (from data in db.MsEmployees where data.EmployeeID == id select data).FirstOrDefault();
+            db.MsEmployees.Remove(temp);
+            db.SaveChanges();
+        }
+
+        public static int getEmployeeId(string name)
+        {
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            return (from data in db.MsEmployees where data.EmployeeName.Equals(name) select data.EmployeeID).FirstOrDefault();
+        }
     }
 }
