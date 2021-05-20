@@ -9,12 +9,12 @@ namespace NeinteenFlower.Handler
 {
     public class FlowerHandler
     {
-        public static void insert(string name, var file, string desc, string type, int price)
+        public static void insert(string name, HttpPostedFile file, string desc, string type, int price)
         {
             FlowerRepository.insert(name, file, desc, type, price);
         }
 
-        public static void update(string name, var file, string desc, string type, int price)
+        public static void update(string name, HttpPostedFile file, string desc, string type, int price)
         {
             FlowerRepository.insert(name, file, desc, type, price);
         }

@@ -30,7 +30,7 @@ namespace NeinteenFlower.Repository
 
         }
 
-        public static void insert(string name, var file, string desc, string type, int price)
+        public static void insert(string name, HttpPostedFile file, string desc, string type, int price)
         {
 
         }

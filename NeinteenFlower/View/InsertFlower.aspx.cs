@@ -11,7 +11,7 @@ namespace NeinteenFlower
     public partial class InsertFlower : System.Web.UI.Page
     {
         string name, desc, type;
-        var file;
+        HttpPostedFile file;
         int price;
         protected void Page_Load(object sender, EventArgs e)
         {

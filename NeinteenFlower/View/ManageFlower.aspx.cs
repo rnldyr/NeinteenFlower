@@ -36,5 +36,10 @@ namespace NeinteenFlower.View
             FlowerRepository.delete(mf.FlowerID);
             Response.Redirect("~/View/ManageFlower.aspx");
         }
+
+        protected void gvFlowers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

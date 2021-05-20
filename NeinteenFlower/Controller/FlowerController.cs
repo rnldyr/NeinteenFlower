@@ -9,9 +9,9 @@ namespace NeinteenFlower.Controller
 {
     public class FlowerController
     {
-        public static string insert(string name, var file, string desc, string type, int price)
+        public static string insert(string name, HttpPostedFile file, string desc, string type, int price)
         {
-            if (name == null || name.Length < 5 || (file) || desc.Length < 50 || type != "Daisies" || type != "Lilies" || type != "Roses" || price.GetType() != typeof(int) || price < 20 || price > 100)
+            if (name == null || name.Length < 5 || file == null || desc.Length < 50 || type != "Daisies" || type != "Lilies" || type != "Roses" || price.GetType() != typeof(int) || price < 20 || price > 100)
             {
                 return "invalid data";
             }
@@ -22,9 +22,9 @@ namespace NeinteenFlower.Controller
             }
         }
 
-        public static string update(string name, var file, string desc, string type, int price)
+        public static string update(string name, HttpPostedFile file, string desc, string type, int price)
         {
-            if (name == null || name.Length < 5 || (file) || desc.Length < 50 || type != "Daisies" || type != "Lilies" || type != "Roses" || price.GetType() != typeof(int) || price < 20 || price > 100)
+            if (name == null || name.Length < 5 || file == null || desc.Length < 50 || type != "Daisies" || type != "Lilies" || type != "Roses" || price.GetType() != typeof(int) || price < 20 || price > 100)
             {
                 return "invalid data";
             }
