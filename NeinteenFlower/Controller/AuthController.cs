@@ -92,5 +92,15 @@ namespace NeinteenFlower.Controller
 
             return AuthHandler.register(email, password, name, DOB, gender, phoneNumber, address);
         }
+
+        public static string preorder(int quantity)
+        {
+            if(quantity < 1 || quantity > 100)
+            {
+                return "Quantity must be between 1 to 100!";
+            }
+
+            return AuthHandler.preorder(quantity);
+        }
     }
 }

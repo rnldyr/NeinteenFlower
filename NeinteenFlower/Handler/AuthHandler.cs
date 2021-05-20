@@ -66,5 +66,9 @@ namespace NeinteenFlower.Handler
             return MemberRepository.register(email, password, name, DOB, gender, phoneNumber, address);
         }
 
+        public static string preorder(int quantity)
+        {
+            return MemberRepository.preorder(quantity);
+        }
     }
 }

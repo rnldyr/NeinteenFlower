@@ -65,5 +65,11 @@ namespace NeinteenFlower.Repository
             NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
             return (from data in db.MsMembers select data).ToList();
         }
+
+        public static string preorder(int quantity)
+        {
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            return "Success";
+        }
     }
 }

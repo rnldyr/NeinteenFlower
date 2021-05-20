@@ -29,5 +29,12 @@ namespace NeinteenFlower.Repository
             db.SaveChanges();
 
         }
+
+        public static int getFlowerID(string name)
+        {
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            var flowerID = (from f in db.MsFlowers where f.FlowerName == name select f.FlowerID).FirstOrDefault();
+            return flowerID;
+        }
     }
 }

@@ -9,6 +9,16 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Label ID="lblPreorder" runat="server" Text="PreOrder" Font-Bold="true"></asp:Label>
+        </div>
+
+        <div>
+            <asp:Label ID="lblQtyError" runat="server" Text="Quantity"></asp:Label>
+            <asp:TextBox ID="txtQuantity" runat="server" TextMode="Number"></asp:TextBox>
+        </div>
+
+        <div>
+            <asp:Button ID="btnPreorder" runat="server" Text="PreOrder" OnClick="btnPreorder_Click" />
         </div>
     </form>
 </body>
