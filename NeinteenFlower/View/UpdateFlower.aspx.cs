@@ -24,28 +24,23 @@ namespace NeinteenFlower
 
                 if (mf != null)
                 {
-                    lblFlowerName.Text = mf.FlowerName;
-                    lblFlowerImg.Text = mf.FlowerImage;
-                    lblFlowerDesc.Text = mf.FlowerDescription;
-                    lblFlowerTyp.Text = mf.MsFlowerType.FlowerTypeName;
-                    lblFlowerPrice.Text = mf.FlowerPrice.ToString();
-                }
-                else
-                {
-                    //error
+                    txtbxFlowerName.Text = mf.FlowerName;
+                    txtbxFlowerDesc.Text = mf.FlowerDescription;
+                    txtbxFlowerTyp.Text = mf.MsFlowerType.FlowerTypeName;
+                    txtbxFlowerPrice.Text = mf.FlowerPrice.ToString();
                 }
             }
         }
 
         protected void btnUpdateFlower_Click(object sender, EventArgs e)
         {
-            string name = lblFlowerName.Text;
-            var file = fupFlowerImg.PostedFile;
-            string desc = lblFlowerDesc.Text;
-            string type = lblFlowerTyp.Text;
-            int price = int.Parse(lblFlowerPrice.Text);
+            string name = txtbxFlowerName.Text;
+            HttpPostedFile file = fupFlowerImg.PostedFile;
+            string desc = txtbxFlowerDesc.Text;
+            string type = txtbxFlowerTyp.Text;
+            int price = int.Parse(txtbxFlowerPrice.Text);
 
-            string res = FlowerController.update(name, file, desc, type, price);
+            string res = FlowerController.update(id, name, file, desc, type, price);
         }
     }
 }

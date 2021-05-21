@@ -20,11 +20,11 @@ namespace NeinteenFlower
 
         protected void btnInsertFlower_Click(object sender, EventArgs e)
         {
-            string name = lblFlowerName.Text;
-            var file = fupFlowerImg.PostedFile;
-            string desc = lblFlowerDesc.Text;
-            string type = lblFlowerTyp.Text;
-            int price = int.Parse(lblFlowerPrice.Text);
+            name = txtbxFlowerName.Text;
+            file = fupFlowerImg.PostedFile;
+            desc = txtbxFlowerDesc.Text;
+            type = txtbxFlowerTyp.Text;
+            price = int.Parse(txtbxFlowerPrice.Text);
 
             string res = FlowerController.insert(name, file, desc, type, price);
         }

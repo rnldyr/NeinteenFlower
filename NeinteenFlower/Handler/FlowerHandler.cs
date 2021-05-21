@@ -9,14 +9,14 @@ namespace NeinteenFlower.Handler
 {
     public class FlowerHandler
     {
-        public static void insert(string name, HttpPostedFile file, string desc, string type, int price)
+        public static string insert(string name, HttpPostedFile file, string desc, string type, int price)
         {
-            FlowerRepository.insert(name, file, desc, type, price);
+            return FlowerRepository.insert(name, file, desc, type, price);
         }
 
-        public static void update(string name, HttpPostedFile file, string desc, string type, int price)
+        public static string update(int id, string name, HttpPostedFile file, string desc, string type, int price)
         {
-            FlowerRepository.insert(name, file, desc, type, price);
+            return FlowerRepository.update(id, name, file, desc, type, price);
         }
 
         public static void delete(int id)

@@ -10,24 +10,23 @@ namespace NeinteenFlower.Factory
     {
         public static MsFlower CreateFlower(String name, String image, String description, String flowerType, int price)
         {
+            MsFlowerType mft = CheckFlowerType(flowerType);
             MsFlower mf = new MsFlower
             {
                 FlowerName = name,
                 FlowerImage = image,
                 FlowerDescription = description,
+                FlowerTypeID = mft.FlowerTypeID,
                 FlowerPrice = price
             };
 
-            CreateFlowerType(flowerType);
             return mf;
         }
 
-        public static MsFlowerType CreateFlowerType(String flowerType)
+        public static MsFlowerType CheckFlowerType(String flowerType)
         {
-            MsFlowerType mft = new MsFlowerType
-            {
-                FlowerTypeName = flowerType
-            };
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            MsFlowerType mft = (from msft in db.MsFlowerTypes where msft.FlowerTypeName == flowerType select msft).FirstOrDefault();
 
             return mft;
         }

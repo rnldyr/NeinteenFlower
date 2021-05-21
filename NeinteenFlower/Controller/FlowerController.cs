@@ -17,12 +17,11 @@ namespace NeinteenFlower.Controller
             }
             else
             {
-                FlowerHandler.insert(name, file, desc, type, price);
-                return null;
+                return FlowerHandler.insert(name, file, desc, type, price);
             }
         }
 
-        public static string update(string name, HttpPostedFile file, string desc, string type, int price)
+        public static string update(int id, string name, HttpPostedFile file, string desc, string type, int price)
         {
             if (name == null || name.Length < 5 || file == null || desc.Length < 50 || type != "Daisies" || type != "Lilies" || type != "Roses" || price.GetType() != typeof(int) || price < 20 || price > 100)
             {
@@ -30,8 +29,7 @@ namespace NeinteenFlower.Controller
             }
             else
             {
-                FlowerHandler.update(name, file, desc, type, price);
-                return null;
+                return FlowerHandler.update(id, name, file, desc, type, price);
             }
         }
         public static List<MsFlower> FlowerList()

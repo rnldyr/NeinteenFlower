@@ -1,4 +1,5 @@
-﻿using NeinteenFlower.Model;
+﻿using NeinteenFlower.Factory;
+using NeinteenFlower.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,14 +31,28 @@ namespace NeinteenFlower.Repository
 
         }
 
-        public static void insert(string name, HttpPostedFile file, string desc, string type, int price)
+        public static string insert(string name, HttpPostedFile file, string desc, string type, int price)
         {
-
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            string path = "~/FlowerImages/" + file.FileName;
+            MsFlower mf = FlowerFactory.CreateFlower(name, path, desc, type, price);
+            db.MsFlowers.Add(mf);
+            db.SaveChanges();
+            return "Insert Flower Success";
         }
 
-        public static void update()
+        public static string update(int id, string name, HttpPostedFile file, string desc, string type, int price)
         {
-
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            MsFlower mf = (from msf in db.MsFlowers where msf.FlowerID == id select msf).FirstOrDefault();
+            mf.FlowerName = name;
+            mf.FlowerImage = file.ToString();
+            mf.FlowerDescription = desc;
+            MsFlowerType mft = FlowerFactory.CheckFlowerType(type);
+            mf.FlowerTypeID = mft.FlowerTypeID;
+            mf.FlowerPrice = price;
+            db.SaveChanges();
+            return "Update Flower Success";
         }
 
         public static MsFlower GetFlower(int id)
