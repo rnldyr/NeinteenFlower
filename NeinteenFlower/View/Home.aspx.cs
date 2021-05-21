@@ -73,11 +73,6 @@ namespace NeinteenFlower.View
             Response.Redirect("~/View/TransactionHistory.aspx");
         }
 
-        protected void btnPreorder_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/View/Preorder.aspx");
-        }
-
         protected void btnMngFlower_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/View/ManageFlower.aspx");

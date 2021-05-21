@@ -18,7 +18,6 @@
         </div>
         <div>
             <asp:Button ID="btnViewTr" runat="server" Text="View Transaction History" Visible="False" OnClick="btnViewTr_Click" />
-            <asp:Button ID="btnPreorder" runat="server" Text="Preorder" Visible="False" OnClick="btnPreorder_Click" />
             <asp:Button ID="btnMngFlower" runat="server" Text="Manage Flower" Visible="False" OnClick="btnMngFlower_Click" />
             <asp:Button ID="btnMngMem" runat="server" Text="Manage Member" Visible="False" OnClick="btnMngMem_Click" />
             <asp:Button ID="btnMngEmp" runat="server" Text="Manage Employee" Visible="False" OnClick="btnMngEmp_Click" />
