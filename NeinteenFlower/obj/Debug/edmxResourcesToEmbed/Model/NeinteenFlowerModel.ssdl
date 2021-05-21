@@ -45,14 +45,11 @@
     <Property Name="MemberEmail" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="MemberPassword" Type="varchar" MaxLength="255" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\RENALDY\DESKTOP\NEINTEENFLOWER\NEINTEENFLOWER\APP_DATA\NEINTEENFLOWERDB.MDF.dbo.TrDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="TrDetail">
     <Key>
-      <PropertyRef Name="TransactionID" />
-      <PropertyRef Name="FlowerID" />
-      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="TransactionDetailID" />
     </Key>
+    <Property Name="TransactionDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TransactionID" Type="int" Nullable="false" />
     <Property Name="FlowerID" Type="int" Nullable="false" />
     <Property Name="Quantity" Type="int" Nullable="false" />
@@ -79,7 +76,7 @@ warning 6002: The table/view 'C:\USERS\RENALDY\DESKTOP\NEINTEENFLOWER\NEINTEENFL
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TrDetail__Flower__35BCFE0A">
+  <Association Name="FK__TrDetail__Flower__4AB81AF0">
     <End Role="MsFlower" Type="Self.MsFlower" Multiplicity="1" />
     <End Role="TrDetail" Type="Self.TrDetail" Multiplicity="*" />
     <ReferentialConstraint>
@@ -91,7 +88,7 @@ warning 6002: The table/view 'C:\USERS\RENALDY\DESKTOP\NEINTEENFLOWER\NEINTEENFL
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TrDetail__Transa__34C8D9D1">
+  <Association Name="FK__TrDetail__Transa__49C3F6B7">
     <End Role="TrHeader" Type="Self.TrHeader" Multiplicity="1" />
     <End Role="TrDetail" Type="Self.TrDetail" Multiplicity="*" />
     <ReferentialConstraint>
@@ -132,23 +129,17 @@ warning 6002: The table/view 'C:\USERS\RENALDY\DESKTOP\NEINTEENFLOWER\NEINTEENFL
     <EntitySet Name="MsFlower" EntityType="Self.MsFlower" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MsFlowerType" EntityType="Self.MsFlowerType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MsMember" EntityType="Self.MsMember" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TrDetail" EntityType="Self.TrDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TrHeader" EntityType="Self.TrHeader" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TrDetail" EntityType="Self.TrDetail" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [TrDetail].[TransactionID] AS [TransactionID], 
-    [TrDetail].[FlowerID] AS [FlowerID], 
-    [TrDetail].[Quantity] AS [Quantity]
-    FROM [dbo].[TrDetail] AS [TrDetail]</DefiningQuery>
-    </EntitySet>
     <AssociationSet Name="FK__MsFlower__Flower__276EDEB3" Association="Self.FK__MsFlower__Flower__276EDEB3">
       <End Role="MsFlowerType" EntitySet="MsFlowerType" />
       <End Role="MsFlower" EntitySet="MsFlower" />
     </AssociationSet>
-    <AssociationSet Name="FK__TrDetail__Flower__35BCFE0A" Association="Self.FK__TrDetail__Flower__35BCFE0A">
+    <AssociationSet Name="FK__TrDetail__Flower__4AB81AF0" Association="Self.FK__TrDetail__Flower__4AB81AF0">
       <End Role="MsFlower" EntitySet="MsFlower" />
       <End Role="TrDetail" EntitySet="TrDetail" />
     </AssociationSet>
-    <AssociationSet Name="FK__TrDetail__Transa__34C8D9D1" Association="Self.FK__TrDetail__Transa__34C8D9D1">
+    <AssociationSet Name="FK__TrDetail__Transa__49C3F6B7" Association="Self.FK__TrDetail__Transa__49C3F6B7">
       <End Role="TrHeader" EntitySet="TrHeader" />
       <End Role="TrDetail" EntitySet="TrDetail" />
     </AssociationSet>

@@ -10,12 +10,12 @@
         <EntityTypeShape EntityType="NeinteenFlowerDBModel.MsFlowerType" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="NeinteenFlowerDBModel.MsMember" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="NeinteenFlowerDBModel.TrHeader" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="NeinteenFlowerDBModel.TrDetail" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
         <AssociationConnector Association="NeinteenFlowerDBModel.FK__TrHeader__Employ__32E0915F" ManuallyRouted="false" />
         <AssociationConnector Association="NeinteenFlowerDBModel.FK__MsFlower__Flower__276EDEB3" ManuallyRouted="false" />
-        <AssociationConnector Association="NeinteenFlowerDBModel.FK__TrDetail__Flower__35BCFE0A" ManuallyRouted="false" />
         <AssociationConnector Association="NeinteenFlowerDBModel.FK__TrHeader__Member__31EC6D26" ManuallyRouted="false" />
-        <AssociationConnector Association="NeinteenFlowerDBModel.FK__TrDetail__Transa__34C8D9D1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="NeinteenFlowerDBModel.TrDetail" Width="1.5" PointX="5.25" PointY="5.375" />
+        <AssociationConnector Association="NeinteenFlowerDBModel.FK__TrDetail__Flower__4AB81AF0" />
+        <AssociationConnector Association="NeinteenFlowerDBModel.FK__TrDetail__Transa__49C3F6B7" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

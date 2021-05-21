@@ -14,6 +14,7 @@ namespace NeinteenFlower.Model
     
     public partial class TrDetail
     {
+        public int TransactionDetailID { get; set; }
         public int TransactionID { get; set; }
         public int FlowerID { get; set; }
         public int Quantity { get; set; }

@@ -26,7 +26,7 @@
     <Property Name="FlowerPrice" Type="Int32" Nullable="false" />
     <Property Name="FlowerImage" Type="String" MaxLength="260" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="MsFlowerType" Relationship="Self.FK__MsFlower__Flower__276EDEB3" FromRole="MsFlower" ToRole="MsFlowerType" />
-    <NavigationProperty Name="TrDetails" Relationship="Self.FK__TrDetail__Flower__35BCFE0A" FromRole="MsFlower" ToRole="TrDetail" />
+    <NavigationProperty Name="TrDetails" Relationship="NeinteenFlowerDBModel.FK__TrDetail__Flower__4AB81AF0" FromRole="MsFlower" ToRole="TrDetail" />
   </EntityType>
   <EntityType Name="MsFlowerType">
     <Key>
@@ -61,19 +61,7 @@
     <Property Name="DiscountPercentage" Type="Double" Nullable="false" />
     <NavigationProperty Name="MsEmployee" Relationship="Self.FK__TrHeader__Employ__32E0915F" FromRole="TrHeader" ToRole="MsEmployee" />
     <NavigationProperty Name="MsMember" Relationship="Self.FK__TrHeader__Member__31EC6D26" FromRole="TrHeader" ToRole="MsMember" />
-    <NavigationProperty Name="TrDetails" Relationship="Self.FK__TrDetail__Transa__34C8D9D1" FromRole="TrHeader" ToRole="TrDetail" />
-  </EntityType>
-  <EntityType Name="TrDetail">
-    <Key>
-      <PropertyRef Name="TransactionID" />
-      <PropertyRef Name="FlowerID" />
-      <PropertyRef Name="Quantity" />
-    </Key>
-    <Property Name="TransactionID" Type="Int32" Nullable="false" />
-    <Property Name="FlowerID" Type="Int32" Nullable="false" />
-    <Property Name="Quantity" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="MsFlower" Relationship="Self.FK__TrDetail__Flower__35BCFE0A" FromRole="TrDetail" ToRole="MsFlower" />
-    <NavigationProperty Name="TrHeader" Relationship="Self.FK__TrDetail__Transa__34C8D9D1" FromRole="TrDetail" ToRole="TrHeader" />
+    <NavigationProperty Name="TrDetails" Relationship="NeinteenFlowerDBModel.FK__TrDetail__Transa__49C3F6B7" FromRole="TrHeader" ToRole="TrDetail" />
   </EntityType>
   <Association Name="FK__TrHeader__Employ__32E0915F">
     <End Role="MsEmployee" Type="Self.MsEmployee" Multiplicity="1" />
@@ -99,18 +87,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TrDetail__Flower__35BCFE0A">
-    <End Role="MsFlower" Type="Self.MsFlower" Multiplicity="1" />
-    <End Role="TrDetail" Type="Self.TrDetail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="MsFlower">
-        <PropertyRef Name="FlowerID" />
-      </Principal>
-      <Dependent Role="TrDetail">
-        <PropertyRef Name="FlowerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__TrHeader__Member__31EC6D26">
     <End Role="MsMember" Type="Self.MsMember" Multiplicity="1" />
     <End Role="TrHeader" Type="Self.TrHeader" Multiplicity="*" />
@@ -123,9 +99,60 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TrDetail__Transa__34C8D9D1">
-    <End Role="TrHeader" Type="Self.TrHeader" Multiplicity="1" />
-    <End Role="TrDetail" Type="Self.TrDetail" Multiplicity="*" />
+  <EntityContainer Name="NeinteenFlowerDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MsEmployees" EntityType="Self.MsEmployee" />
+    <EntitySet Name="MsFlowers" EntityType="Self.MsFlower" />
+    <EntitySet Name="MsFlowerTypes" EntityType="Self.MsFlowerType" />
+    <EntitySet Name="MsMembers" EntityType="Self.MsMember" />
+    <EntitySet Name="TrHeaders" EntityType="Self.TrHeader" />
+    <AssociationSet Name="FK__TrHeader__Employ__32E0915F" Association="Self.FK__TrHeader__Employ__32E0915F">
+      <End Role="MsEmployee" EntitySet="MsEmployees" />
+      <End Role="TrHeader" EntitySet="TrHeaders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MsFlower__Flower__276EDEB3" Association="Self.FK__MsFlower__Flower__276EDEB3">
+      <End Role="MsFlowerType" EntitySet="MsFlowerTypes" />
+      <End Role="MsFlower" EntitySet="MsFlowers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TrHeader__Member__31EC6D26" Association="Self.FK__TrHeader__Member__31EC6D26">
+      <End Role="MsMember" EntitySet="MsMembers" />
+      <End Role="TrHeader" EntitySet="TrHeaders" />
+    </AssociationSet>
+    <EntitySet Name="TrDetails" EntityType="NeinteenFlowerDBModel.TrDetail" />
+    <AssociationSet Name="FK__TrDetail__Flower__4AB81AF0" Association="NeinteenFlowerDBModel.FK__TrDetail__Flower__4AB81AF0">
+      <End Role="MsFlower" EntitySet="MsFlowers" />
+      <End Role="TrDetail" EntitySet="TrDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TrDetail__Transa__49C3F6B7" Association="NeinteenFlowerDBModel.FK__TrDetail__Transa__49C3F6B7">
+      <End Role="TrHeader" EntitySet="TrHeaders" />
+      <End Role="TrDetail" EntitySet="TrDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TrDetail">
+    <Key>
+      <PropertyRef Name="TransactionDetailID" />
+    </Key>
+    <Property Name="TransactionDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionID" Type="Int32" Nullable="false" />
+    <Property Name="FlowerID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MsFlower" Relationship="NeinteenFlowerDBModel.FK__TrDetail__Flower__4AB81AF0" FromRole="TrDetail" ToRole="MsFlower" />
+    <NavigationProperty Name="TrHeader" Relationship="NeinteenFlowerDBModel.FK__TrDetail__Transa__49C3F6B7" FromRole="TrDetail" ToRole="TrHeader" />
+  </EntityType>
+  <Association Name="FK__TrDetail__Flower__4AB81AF0">
+    <End Type="NeinteenFlowerDBModel.MsFlower" Role="MsFlower" Multiplicity="1" />
+    <End Type="NeinteenFlowerDBModel.TrDetail" Role="TrDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MsFlower">
+        <PropertyRef Name="FlowerID" />
+      </Principal>
+      <Dependent Role="TrDetail">
+        <PropertyRef Name="FlowerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TrDetail__Transa__49C3F6B7">
+    <End Type="NeinteenFlowerDBModel.TrHeader" Role="TrHeader" Multiplicity="1" />
+    <End Type="NeinteenFlowerDBModel.TrDetail" Role="TrDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TrHeader">
         <PropertyRef Name="TransactionID" />
@@ -135,32 +162,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="NeinteenFlowerDBEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="MsEmployees" EntityType="Self.MsEmployee" />
-    <EntitySet Name="MsFlowers" EntityType="Self.MsFlower" />
-    <EntitySet Name="MsFlowerTypes" EntityType="Self.MsFlowerType" />
-    <EntitySet Name="MsMembers" EntityType="Self.MsMember" />
-    <EntitySet Name="TrHeaders" EntityType="Self.TrHeader" />
-    <EntitySet Name="TrDetails" EntityType="Self.TrDetail" />
-    <AssociationSet Name="FK__TrHeader__Employ__32E0915F" Association="Self.FK__TrHeader__Employ__32E0915F">
-      <End Role="MsEmployee" EntitySet="MsEmployees" />
-      <End Role="TrHeader" EntitySet="TrHeaders" />
-    </AssociationSet>
-    <AssociationSet Name="FK__MsFlower__Flower__276EDEB3" Association="Self.FK__MsFlower__Flower__276EDEB3">
-      <End Role="MsFlowerType" EntitySet="MsFlowerTypes" />
-      <End Role="MsFlower" EntitySet="MsFlowers" />
-    </AssociationSet>
-    <AssociationSet Name="FK__TrDetail__Flower__35BCFE0A" Association="Self.FK__TrDetail__Flower__35BCFE0A">
-      <End Role="MsFlower" EntitySet="MsFlowers" />
-      <End Role="TrDetail" EntitySet="TrDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK__TrHeader__Member__31EC6D26" Association="Self.FK__TrHeader__Member__31EC6D26">
-      <End Role="MsMember" EntitySet="MsMembers" />
-      <End Role="TrHeader" EntitySet="TrHeaders" />
-    </AssociationSet>
-    <AssociationSet Name="FK__TrDetail__Transa__34C8D9D1" Association="Self.FK__TrDetail__Transa__34C8D9D1">
-      <End Role="TrHeader" EntitySet="TrHeaders" />
-      <End Role="TrDetail" EntitySet="TrDetails" />
-    </AssociationSet>
-  </EntityContainer>
 </Schema>

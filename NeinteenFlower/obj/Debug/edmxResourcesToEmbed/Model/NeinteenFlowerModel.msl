@@ -64,9 +64,10 @@
     <EntitySetMapping Name="TrDetails">
       <EntityTypeMapping TypeName="NeinteenFlowerDBModel.TrDetail">
         <MappingFragment StoreEntitySet="TrDetail">
-          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
-          <ScalarProperty Name="FlowerID" ColumnName="FlowerID" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="FlowerID" ColumnName="FlowerID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="TransactionDetailID" ColumnName="TransactionDetailID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
