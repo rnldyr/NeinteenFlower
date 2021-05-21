@@ -61,9 +61,11 @@ namespace NeinteenFlower.View
             Response.Redirect("~/View/Login.aspx");
         }
 
-        protected void gvFlowers_SelectedIndexChanged(object sender, EventArgs e)
+        protected void gvFlowers_SelectedIndexChanged(object sender, GridViewSelectEventArgs e)
         {
-
+            GridViewRow row = gvFlowers.Rows[e.NewSelectedIndex];
+            int flowerID = FlowerRepository.getFlowerId(row.Cells[0].Text.ToString());
+            Response.Redirect("~/View/Preorder.aspx?id=" + flowerID);
         }
 
         protected void btnViewTr_Click(object sender, EventArgs e)

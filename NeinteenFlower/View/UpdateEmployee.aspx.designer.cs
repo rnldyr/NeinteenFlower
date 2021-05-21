@@ -7,12 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
-namespace NeinteenFlower.View
-{
-    public partial class UpdateEmployee
-    {
-
+namespace NeinteenFlower.View {
+    
+    
+    public partial class UpdateEmployee {
+        
         /// <summary>
         /// form1 control.
         /// </summary>

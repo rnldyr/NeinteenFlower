@@ -61,5 +61,12 @@ namespace NeinteenFlower.Repository
             MsFlower mf = (from msf in db.MsFlowers where msf.FlowerID == id select msf).FirstOrDefault();
             return mf;
         }
+
+        public static int getFlowerId(string name)
+        {
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            var flowerID = (from f in db.MsFlowers where f.FlowerName == name select f.FlowerID).FirstOrDefault();
+            return flowerID;
+        }
     }
 }

@@ -93,6 +93,7 @@
       <LastGenOutput>NeinteenFlowerModel.cs</LastGenOutput>
     </Content>
     <Content Include="View\InsertMember.aspx" />
+    <Content Include="View\UpdateEmployee.aspx" />
     <Content Include="View\UpdateFlower.aspx" />
     <Content Include="View\ForgotPassword.aspx" />
     <Content Include="View\Home.aspx" />
@@ -103,6 +104,7 @@
     <Content Include="View\Preorder.aspx" />
     <Content Include="View\Register.aspx" />
     <Content Include="View\TransactionHistory.aspx" />
+    <Content Include="View\UpdateMember.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -110,13 +112,17 @@
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\FlowerController.cs" />
     <Compile Include="Controller\MemberController.cs" />
+    <Compile Include="Controller\TransactionController.cs" />
     <Compile Include="Factory\EmployeeFactory.cs" />
     <Compile Include="Factory\FlowerFactory.cs" />
     <Compile Include="Factory\MemberFactory.cs" />
+    <Compile Include="Factory\TransactionFactory.cs" />
     <Compile Include="Handler\AuthHandler.cs" />
     <Compile Include="Handler\EmployeeHandler.cs" />
     <Compile Include="Handler\FlowerHandler.cs" />
     <Compile Include="Handler\MemberHandler.cs" />
+    <Compile Include="Handler\TransactionHandler.cs" />
+    <Compile Include="Repository\TransactionRepository.cs" />
     <Compile Include="View\InsertEmployee.aspx.cs">
       <DependentUpon>InsertEmployee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -174,6 +180,13 @@
     </Compile>
     <Compile Include="View\InsertMember.aspx.designer.cs">
       <DependentUpon>InsertMember.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\UpdateEmployee.aspx.cs">
+      <DependentUpon>UpdateEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\UpdateEmployee.aspx.designer.cs">
+      <DependentUpon>UpdateEmployee.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\UpdateFlower.aspx.cs">
       <DependentUpon>UpdateFlower.aspx</DependentUpon>
@@ -244,6 +257,13 @@
     </Compile>
     <Compile Include="View\TransactionHistory.aspx.designer.cs">
       <DependentUpon>TransactionHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\UpdateMember.aspx.cs">
+      <DependentUpon>UpdateMember.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\UpdateMember.aspx.designer.cs">
+      <DependentUpon>UpdateMember.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

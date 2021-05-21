@@ -79,5 +79,11 @@ namespace NeinteenFlower.Repository
             db.SaveChanges();
             return "Success";
         }
+
+        public static int countEmployee()
+        {
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            return (from data in db.MsEmployees select data).Count();
+        }
     }
 }
