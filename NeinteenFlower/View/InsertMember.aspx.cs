@@ -51,5 +51,10 @@ namespace NeinteenFlower.View
         {
             Response.Redirect("~/View/ManageMember.aspx");
         }
+
+        protected void tbDOB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

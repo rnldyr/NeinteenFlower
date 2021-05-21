@@ -23,14 +23,14 @@
             <asp:Button ID="btnMngEmp" runat="server" Text="Manage Employee" Visible="False" OnClick="btnMngEmp_Click" />
         </div>
         <br />
-        <asp:GridView ID="gvFlowers" runat="server" AutoGenerateColumns="False" Visible="False" OnSelectedIndexChanged="gvFlowers_SelectedIndexChanged">
+        <asp:GridView ID="gvFlowers" runat="server" AutoGenerateColumns="False" Visible="False" OnSelectedIndexChanged="gvFlowers_SelectedIndexChanged" OnRowEditing="gvFlowers_RowPreorder">
             <Columns>
                 <asp:BoundField DataField="FlowerName" HeaderText="Name" />
                 <asp:ImageField DataImageUrlField="FlowerImage" HeaderText="Image" />
                 <asp:BoundField DataField="FlowerDescription" HeaderText="Description" />
                 <asp:BoundField DataField="MsFlowerType.FlowerTypeName" HeaderText="Flower Type" />
                 <asp:BoundField DataField="FlowerPrice" HeaderText="Price" />
-                <asp:CommandField SelectText="Pre Order" ShowSelectButton="True" />
+                <asp:CommandField ButtonType="Button" EditText="Pre Order" ShowEditButton="true"/>
             </Columns>
         </asp:GridView>
     </form>

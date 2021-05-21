@@ -85,5 +85,21 @@ namespace NeinteenFlower.Repository
             NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
             return (from data in db.MsEmployees select data).Count();
         }
+
+        public static string updateEmployee(int id, string email, string password, string name, string DOB, string gender, string phoneNumber, string address, int salary)
+        {
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            MsEmployee employee = db.MsEmployees.Find(id);
+            employee.EmployeeEmail = email;
+            employee.EmployeePassword = password;
+            employee.EmployeeName = name;
+            employee.EmployeeDOB = DateTime.Parse(DOB);
+            employee.EmployeeGender = gender;
+            employee.EmployeePhone = phoneNumber;
+            employee.EmployeeAddress = address;
+            employee.EmployeeSalary = salary;
+            db.SaveChanges();
+            return "Success";
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace NeinteenFlower.Repository
             NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
             TrHeader transaction = TransactionFactory.createTransaction(memberId, employeeId, curr, discount);
             db.TrHeaders.Add(transaction);
+            db.SaveChanges();
 
             int transId = transaction.TransactionID;
             TrDetail detail = TransactionFactory.createDetail(transId, flowerId, quantity);

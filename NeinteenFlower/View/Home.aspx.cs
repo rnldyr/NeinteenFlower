@@ -40,7 +40,6 @@ namespace NeinteenFlower.View
                 user = (MsMember)Session["user"];
                 lblWelcomeMsg.Text = "Welcome, " + user.MemberName;
                 btnViewTr.Visible = true;
-                btnPreorder.Visible = true;
 
                 gvFlowers.Visible = true;
                 List<MsFlower> flowerList = FlowerRepository.FlowerList();
@@ -61,9 +60,9 @@ namespace NeinteenFlower.View
             Response.Redirect("~/View/Login.aspx");
         }
 
-        protected void gvFlowers_SelectedIndexChanged(object sender, GridViewSelectEventArgs e)
+        protected void gvFlowers_RowPreorder(object sender, GridViewEditEventArgs e)
         {
-            GridViewRow row = gvFlowers.Rows[e.NewSelectedIndex];
+            GridViewRow row = gvFlowers.Rows[e.NewEditIndex];
             int flowerID = FlowerRepository.getFlowerId(row.Cells[0].Text.ToString());
             Response.Redirect("~/View/Preorder.aspx?id=" + flowerID);
         }
@@ -86,6 +85,11 @@ namespace NeinteenFlower.View
         protected void btnMngEmp_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/View/ManageEmployee.aspx");
+        }
+
+        protected void gvFlowers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -30,6 +30,7 @@ namespace NeinteenFlower.View
             GridViewRow row = Employees.Rows[e.RowIndex];
             int id = EmployeeController.getEmployeeId(row.Cells[0].Text.ToString());
             EmployeeController.DeleteEmployee(id);
+            Response.Redirect("~/View/ManageEmployee.aspx");
         }
     }
 }

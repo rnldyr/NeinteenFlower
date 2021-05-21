@@ -19,6 +19,11 @@ namespace NeinteenFlower.Handler
             MemberRepository.DeleteMember(id);
             return;
         }
+        
+        public static MsMember getMember(int id)
+        {
+            return MemberRepository.getMember(id);
+        }
 
         public static int getMemberId(string name)
         {
@@ -37,6 +42,11 @@ namespace NeinteenFlower.Handler
         public static string register(string email, string password, string name, string DOB, string gender, string phoneNumber, string address)
         {
             return MemberRepository.register(email, password, name, DOB, gender, phoneNumber, address);
+        }
+
+        public static string updateMember(int id, string email, string password, string name, string DOB, string gender, string phoneNumber, string address)
+        {
+            return MemberRepository.updateMember(id, email, password, name, DOB, gender, phoneNumber, address);
         }
     }
 }

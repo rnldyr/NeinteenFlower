@@ -14,7 +14,7 @@ namespace NeinteenFlower.Handler
 
             Random employeeRand = new Random();
             var listEmployee = EmployeeRepository.getListEmployee();
-            int employeeId = listEmployee.ElementAt(employeeRand.Next(1, employeeCount)).EmployeeID;
+            int employeeId = listEmployee.ElementAt(employeeRand.Next(0, employeeCount-1)).EmployeeID;
 
             return TransactionRepository.preorder(memberId, employeeId, curr, discount, flowerId, quantity);
         }

@@ -19,6 +19,10 @@ namespace NeinteenFlower.Handler
             EmployeeRepository.DeleteEmployee(id);
             return;
         }
+        public static MsEmployee getEmployee(int id)
+        {
+            return EmployeeRepository.getEmployee(id);
+        }
 
         public static int getEmployeeId(string name)
         {
@@ -37,6 +41,11 @@ namespace NeinteenFlower.Handler
         public static string register(string email, string password, string name, string DOB, string gender, string phoneNumber, string address, int salary)
         {
             return EmployeeRepository.register(email, password, name, DOB, gender, phoneNumber, address, salary);
+        }
+
+        public static string updateEmployee(int id, string email, string password, string name, string DOB, string gender, string phoneNumber, string address, int salary)
+        {
+            return EmployeeRepository.updateEmployee(id, email, password, name, DOB, gender, phoneNumber, address, salary);
         }
     }
 }

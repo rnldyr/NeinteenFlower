@@ -13,10 +13,6 @@ namespace NeinteenFlower.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["role"] != "admin")
-            {
-                Response.Redirect("~/View/Home.aspx");
-            }
             List<MsMember> memberlist = MemberController.getListMembers();
             Members.DataSource = memberlist;
             Members.DataBind();
@@ -34,6 +30,7 @@ namespace NeinteenFlower.View
             GridViewRow row = Members.Rows[e.RowIndex];
             int id = MemberController.getMemberId(row.Cells[0].Text.ToString());
             MemberController.DeleteMember(id);
+            Response.Redirect("~/View/ManageMember.aspx");
         }
     }
 }

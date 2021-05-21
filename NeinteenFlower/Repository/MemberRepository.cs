@@ -69,8 +69,7 @@ namespace NeinteenFlower.Repository
         public static void DeleteMember (int id)
         {
             NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
-            MsMember temp = (from data in db.MsMembers where data.MemberID == id select data).FirstOrDefault();
-            db.MsMembers.Remove(temp);
+            db.MsMembers.Remove(db.MsMembers.Find(id));
             db.SaveChanges();
         }
 
@@ -78,6 +77,20 @@ namespace NeinteenFlower.Repository
         {
             NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
             return (from data in db.MsMembers where data.MemberName.Equals(name) select data.MemberID).FirstOrDefault();
+        }
+
+        public static string updateMember(int id, string email, string password, string name, string DOB, string gender, string phoneNumber, string address)
+        {
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            MsMember member =  db.MsMembers.Find(id);
+            member.MemberEmail = email;
+            member.MemberPassword = password;
+            member.MemberDOB = DateTime.Parse(DOB);
+            member.MemberGender = gender;
+            member.MemberPhone = phoneNumber;
+            member.MemberAddress = address;
+            db.SaveChanges();
+            return "Success";
         }
     }
 }
