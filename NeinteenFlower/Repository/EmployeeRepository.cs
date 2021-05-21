@@ -1,4 +1,5 @@
-﻿using NeinteenFlower.Model;
+﻿using NeinteenFlower.Factory;
+using NeinteenFlower.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,6 +69,15 @@ namespace NeinteenFlower.Repository
         {
             NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
             return (from data in db.MsEmployees where data.EmployeeName.Equals(name) select data.EmployeeID).FirstOrDefault();
+        }
+
+        public static string register(string email, string password, string name, string DOB, string gender, string phoneNumber, string address, int salary)
+        {
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            MsEmployee employee = EmployeeFactory.CreateEmployee(email, password, name, DOB, gender, phoneNumber, address, salary);
+            db.MsEmployees.Add(employee);
+            db.SaveChanges();
+            return "Success";
         }
     }
 }
