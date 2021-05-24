@@ -24,9 +24,20 @@ namespace NeinteenFlower
             file = fupFlowerImg.PostedFile;
             desc = txtbxFlowerDesc.Text;
             type = txtbxFlowerTyp.Text;
-            price = int.Parse(txtbxFlowerPrice.Text);
+            try
+            {
+                price = int.Parse(txtbxFlowerPrice.Text);
+            }
+            catch
+            {
+                price = 0;
+            }
 
             string res = FlowerController.insert(name, file, desc, type, price);
+            if(res != "invalid data")
+            {
+                Response.Redirect("~/View/ManageFlower.aspx");
+            }
         }
     }
 }

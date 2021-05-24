@@ -34,7 +34,10 @@ namespace NeinteenFlower.Repository
         public static string insert(string name, HttpPostedFile file, string desc, string type, int price)
         {
             NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
-            string path = "~/FlowerImages/" + file.FileName;
+            string[] getExtension = file.FileName.Split('.');
+            string extension = getExtension[getExtension.Count()-1];
+            string path = "~/FlowerImages/" + name + "." + extension;
+            file.SaveAs("~/FlowerImages/" + name + "." + extension);
             MsFlower mf = FlowerFactory.CreateFlower(name, path, desc, type, price);
             db.MsFlowers.Add(mf);
             db.SaveChanges();
