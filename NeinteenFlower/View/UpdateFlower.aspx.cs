@@ -41,6 +41,14 @@ namespace NeinteenFlower
             int price = int.Parse(txtbxFlowerPrice.Text);
 
             string res = FlowerController.update(id, name, file, desc, type, price);
+            if (res != "invalid data")
+            {
+                Response.Redirect("~/View/ManageFlower.aspx");
+            }
+            else
+            {
+                lblRes.Text = res;
+            }
         }
     }
 }

@@ -32,6 +32,7 @@
             <br />
             <br />
             <asp:Button ID="btnUpdateFlower" runat="server" Text="Update" OnClick="btnUpdateFlower_Click"/>
+            <asp:Label ID="lblRes" runat="server" Text=""></asp:Label>
         </div>
     </form>
 </body>
