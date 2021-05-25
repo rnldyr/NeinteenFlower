@@ -32,6 +32,7 @@
             <br />
             <br />
             <asp:Button ID="btnInsertFlower" runat="server" Text="Insert" OnClick="btnInsertFlower_Click"/>
+            <asp:Label ID="lblRes" runat="server" Text=""></asp:Label>
         </div>
     </form>
 </body>

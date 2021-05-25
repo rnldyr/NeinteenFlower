@@ -38,6 +38,10 @@ namespace NeinteenFlower
             {
                 Response.Redirect("~/View/ManageFlower.aspx");
             }
+            else
+            {
+                lblRes.Text = res;
+            }
         }
     }
 }
