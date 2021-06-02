@@ -84,7 +84,7 @@ namespace NeinteenFlower.View
                 HttpCookie cookie = new HttpCookie("user");
                 cookie.Values.Add("userId", userId.ToString());
                 cookie.Values.Add("role", role);
-                cookie.Expires.AddDays(1);
+                cookie.Expires = DateTime.Now.AddDays(1);
                 Response.SetCookie(cookie);
             }
 
