@@ -23,5 +23,11 @@ namespace NeinteenFlower.Repository
             db.SaveChanges();
             return "Success";
         }
+
+        public static List<TrHeader> getTransaction()
+        {
+            NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
+            return (from x in db.TrHeaders select x).ToList();
+        }
     }
 }

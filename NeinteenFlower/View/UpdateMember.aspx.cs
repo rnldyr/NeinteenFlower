@@ -9,10 +9,21 @@ using System.Web.UI.WebControls;
 
 namespace NeinteenFlower.View
 {
-	public partial class UpdateMember : System.Web.UI.Page
-	{
-		protected void Page_Load(object sender, EventArgs e)
-		{
+    public partial class UpdateMember : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Session["user"] == null || Session["role"] == null)
+            {
+                Response.Redirect("~/View/Login.aspx");
+                return;
+            }
+
+            if (!Session["role"].Equals("Admin"))
+            {
+                Response.Redirect("~/View/Home.aspx");
+            }
+
             if (!IsPostBack)
             {
                 int memberId = int.Parse(Request["id"]);
@@ -32,7 +43,7 @@ namespace NeinteenFlower.View
                 tbPhoneNumber.Text = member.MemberPhone;
                 tbAddress.Text = member.MemberAddress;
             }
-		}
+        }
 
         protected void BackBtn_Click(object sender, EventArgs e)
         {

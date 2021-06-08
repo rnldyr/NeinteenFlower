@@ -12,7 +12,16 @@ namespace NeinteenFlower.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] == null || Session["role"] == null)
+            {
+                Response.Redirect("~/View/Login.aspx");
+                return;
+            }
 
+            if (!Session["role"].Equals("Admin"))
+            {
+                Response.Redirect("~/View/Home.aspx");
+            }
         }
 
         protected void InsertBtn_Click(object sender, EventArgs e)

@@ -9,10 +9,21 @@ using System.Web.UI.WebControls;
 
 namespace NeinteenFlower.View
 {
-	public partial class UpdateEmployee : System.Web.UI.Page
-	{
+    public partial class UpdateEmployee : System.Web.UI.Page
+    {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] == null || Session["role"] == null)
+            {
+                Response.Redirect("~/View/Login.aspx");
+                return;
+            }
+
+            if (!Session["role"].Equals("Admin"))
+            {
+                Response.Redirect("~/View/Home.aspx");
+            }
+
             if (!IsPostBack)
             {
                 int employeeId = int.Parse(Request["id"]);

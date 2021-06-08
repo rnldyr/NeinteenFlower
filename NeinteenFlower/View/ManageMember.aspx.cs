@@ -13,9 +13,22 @@ namespace NeinteenFlower.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<MsMember> memberlist = MemberController.getListMembers();
-            Members.DataSource = memberlist;
-            Members.DataBind();
+            if (Session["user"] == null || Session["role"] == null)
+            {
+                Response.Redirect("~/View/Login.aspx");
+                return;
+            }
+
+            if (!Session["role"].Equals("Admin"))
+            {
+                Response.Redirect("~/View/Home.aspx");
+            }
+            else
+            {
+                List<MsMember> memberlist = MemberController.getListMembers();
+                Members.DataSource = memberlist;
+                Members.DataBind();
+            }
         }
 
         protected void Members_RowEditing(object sender, GridViewEditEventArgs e)

@@ -13,9 +13,22 @@ namespace NeinteenFlower.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<MsEmployee> employeelist = EmployeeController.GetListEmployee();
-            Employees.DataSource = employeelist;
-            Employees.DataBind();
+            if (Session["user"] == null || Session["role"] == null)
+            {
+                Response.Redirect("~/View/Login.aspx");
+                return;
+            }
+
+            if (!Session["role"].Equals("Admin"))
+            {
+                Response.Redirect("~/View/Home.aspx");
+            }
+            else
+            {
+                List<MsEmployee> employeelist = EmployeeController.GetListEmployee();
+                Employees.DataSource = employeelist;
+                Employees.DataBind();
+            }
         }
 
         protected void Employees_RowEditing(object sender, GridViewEditEventArgs e)

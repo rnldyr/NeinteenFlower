@@ -1,4 +1,5 @@
-﻿using NeinteenFlower.Repository;
+﻿using NeinteenFlower.Model;
+using NeinteenFlower.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,11 @@ namespace NeinteenFlower.Handler
             int employeeId = listEmployee.ElementAt(employeeRand.Next(0, employeeCount-1)).EmployeeID;
 
             return TransactionRepository.preorder(memberId, employeeId, curr, discount, flowerId, quantity);
+        }
+
+        public static List<TrHeader> getTransaction()
+        {
+            return TransactionRepository.getTransaction();
         }
     }
 }

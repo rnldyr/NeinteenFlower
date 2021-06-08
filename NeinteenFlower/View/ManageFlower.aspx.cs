@@ -13,9 +13,22 @@ namespace NeinteenFlower.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<MsFlower> flowerList = FlowerRepository.FlowerList();
-            gvFlowers.DataSource = flowerList;
-            gvFlowers.DataBind();
+            if (Session["user"] == null || Session["role"] == null)
+            {
+                Response.Redirect("~/View/Login.aspx");
+                return;
+            }
+
+            if (!Session["role"].Equals("Employee"))
+            {
+                Response.Redirect("~/View/Home.aspx");
+            }
+            else
+            {
+                List<MsFlower> flowerList = FlowerRepository.FlowerList();
+                gvFlowers.DataSource = flowerList;
+                gvFlowers.DataBind();
+            }
         }
 
         protected void gvFlowers_RowEditing(object sender, GridViewEditEventArgs e)

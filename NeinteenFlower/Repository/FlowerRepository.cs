@@ -34,25 +34,68 @@ namespace NeinteenFlower.Repository
         public static string insert(string name, HttpPostedFile file, string desc, string type, int price)
         {
             NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
-            string[] getExtension = file.FileName.Split('.');
-            string extension = getExtension[getExtension.Count()-1];
-            string path = "~/FlowerImages/" + name + "." + extension;
-            file.SaveAs("~/FlowerImages/" + name + "." + extension);
-            MsFlower mf = FlowerFactory.CreateFlower(name, path, desc, type, price);
+            string path = "~/FlowerImages/" + name + ".jpg";
+            int typeId = 0;
+            switch (type)
+            {
+                case "Daisies":
+                    typeId = 1;
+                    break;
+                case "Roses":
+                    typeId = 2;
+                    break;
+                case "Lilies":
+                    typeId = 3;
+                    break;
+            }
+            MsFlower mf = FlowerFactory.CreateFlower(name, path, desc, typeId, price);
             db.MsFlowers.Add(mf);
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            {
+                Exception raise = dbEx;
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        string message = string.Format("{0}:{1}",
+                            validationErrors.Entry.Entity.ToString(),
+                            validationError.ErrorMessage);
+                        // raise a new exception nesting  
+                        // the current instance as InnerException  
+                        raise = new InvalidOperationException(message, raise);
+                    }
+                }
+                throw raise;
+            }
             return "Insert Flower Success";
         }
 
         public static string update(int id, string name, HttpPostedFile file, string desc, string type, int price)
         {
             NeinteenFlowerDBEntities db = new NeinteenFlowerDBEntities();
-            MsFlower mf = (from msf in db.MsFlowers where msf.FlowerID == id select msf).FirstOrDefault();
+            MsFlower mf = db.MsFlowers.Find(id);
             mf.FlowerName = name;
-            mf.FlowerImage = file.ToString();
+            string path = "~/FlowerImages/" + name + ".jpg";
+            mf.FlowerImage = path;
             mf.FlowerDescription = desc;
-            MsFlowerType mft = FlowerFactory.CheckFlowerType(type);
-            mf.FlowerTypeID = mft.FlowerTypeID;
+            int typeId = 0;
+            switch (type)
+            {
+                case "Daisies":
+                    typeId = 1;
+                    break;
+                case "Roses":
+                    typeId = 2;
+                    break;
+                case "Lilies":
+                    typeId = 3;
+                    break;
+            }
+            mf.FlowerTypeID = typeId;
             mf.FlowerPrice = price;
             db.SaveChanges();
             return "Update Flower Success";

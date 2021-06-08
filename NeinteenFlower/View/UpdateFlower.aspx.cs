@@ -7,20 +7,28 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace NeinteenFlower
+namespace NeinteenFlower.View
 {
     public partial class UpdateFlower : System.Web.UI.Page
     {
-        static MsFlower mf;
-        string flowerid;
-        int id;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] == null || Session["role"] == null)
+            {
+                Response.Redirect("~/View/Login.aspx");
+                return;
+            }
+
+            if (!Session["role"].Equals("Employee"))
+            {
+                Response.Redirect("~/View/Home.aspx");
+            }
+
             if (!Page.IsPostBack)
             {
-                flowerid = Request.QueryString["id"];
-                id = int.Parse(flowerid);
-                mf = FlowerController.GetFlower(id);
+                var flowerid = Request["id"];
+                int id = int.Parse(flowerid);
+                MsFlower mf = FlowerController.GetFlower(id);
 
                 if (mf != null)
                 {
@@ -39,14 +47,17 @@ namespace NeinteenFlower
             string desc = txtbxFlowerDesc.Text;
             string type = txtbxFlowerTyp.Text;
             int price = int.Parse(txtbxFlowerPrice.Text);
+            int id = int.Parse(Request["id"]);
 
             string res = FlowerController.update(id, name, file, desc, type, price);
             if (res != "invalid data")
             {
+                file.SaveAs(Server.MapPath("~/FlowerImages/" + name + ".jpg"));
                 Response.Redirect("~/View/ManageFlower.aspx");
             }
             else
             {
+                file.SaveAs(Server.MapPath("~/FlowerImages/" + name + ".jpg"));
                 lblRes.Text = res;
             }
         }

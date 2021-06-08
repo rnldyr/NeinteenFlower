@@ -48,18 +48,6 @@ namespace NeinteenFlower.View
             }
         }
 
-        protected void btnHome_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/View/Home.aspx");
-        }
-
-        protected void btnLogout_Click(object sender, EventArgs e)
-        {
-            Response.Cookies["user"].Expires = DateTime.Now.AddDays(-1);
-            Session.Clear();
-            Response.Redirect("~/View/Login.aspx");
-        }
-
         protected void gvFlowers_RowPreorder(object sender, GridViewEditEventArgs e)
         {
             GridViewRow row = gvFlowers.Rows[e.NewEditIndex];
